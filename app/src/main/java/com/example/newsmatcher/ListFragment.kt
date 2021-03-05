@@ -32,7 +32,6 @@ class ListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        Log.i("Lifecycle", "ListFragment: onActivityCreated")
     }
 
 
@@ -40,7 +39,6 @@ class ListFragment : Fragment() {
         super.onStart()
        // viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         initRecycler()
-        Log.i("Lifecycle", "ListFragment: onStart")
     }
 
 
@@ -54,15 +52,9 @@ class ListFragment : Fragment() {
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        Log.i("Lifecycle", "ListFragment: onStop")
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i("Lifecycle", "ListFragment: onDestroy")
-    }
+
+
 
 
 }
