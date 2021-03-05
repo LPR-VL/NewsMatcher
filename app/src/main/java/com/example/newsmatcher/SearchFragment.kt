@@ -44,7 +44,6 @@ class SearchFragment : Fragment(), CalendarView.OnDateChangeListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
     override fun onStart() {
@@ -75,11 +74,11 @@ class SearchFragment : Fragment(), CalendarView.OnDateChangeListener {
         }
     }
 
-    fun goToListFragment(){
+    private fun goToListFragment(){
         findNavController().navigate(R.id.action_searchFragment_to_listFragment)
     }
 
-    fun initViews(){
+    private fun initViews(){
          searchField = view?.findViewById(R.id.search_field)!!
          dateField = view?.findViewById(R.id.date_text)!!
          dateField.text = viewModel.date
@@ -93,7 +92,7 @@ class SearchFragment : Fragment(), CalendarView.OnDateChangeListener {
          dateFieldText = view?.findViewById(R.id.textView2)!!
     }
 
-    fun hideViews(){
+    private fun hideViews(){
         searchButton.isClickable = false
         searchButton.isEnabled  = false
         titleCheckSwitch.isClickable = false
@@ -114,11 +113,11 @@ class SearchFragment : Fragment(), CalendarView.OnDateChangeListener {
 
     }
 
-    fun titleCheck():ArrayList<Article> {
-        var newList = ArrayList<Article>()
+    private fun titleCheck():ArrayList<Article> {
+        val newList = ArrayList<Article>()
         val searchString = searchField.text.toString()
-        var words = searchString.split(" ")
-        var wordsSize = words.size
+        val words = searchString.split(" ")
+        val wordsSize = words.size
         when (wordsSize) {
             1->{
                 for (cont:Article in artList) {if (cont.title.contains(words[0], true)) {newList.add(cont)}}
@@ -166,12 +165,12 @@ class SearchFragment : Fragment(), CalendarView.OnDateChangeListener {
         if (selectedDay.before(lastDay)) { Toast.makeText(this.context, "Max - one month from today", Toast.LENGTH_LONG).show()}
         else {
 
-            var smonth = if (month == 12) {
+            val smonth = if (month == 12) {
                 1
             } else {
                 month + 1
             }
-            var selectedDayString = "$year-$smonth-$dayOfMonth"
+            val selectedDayString = "$year-$smonth-$dayOfMonth"
             viewModel.date = selectedDayString
            // Log.i("Tag", viewModel.date)
             initViews()

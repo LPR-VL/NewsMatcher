@@ -26,7 +26,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val apiKey = "99f699c6035c453d91fcf12e64212f2a"
 
 
-    fun getTodaysDate(): String {
+    private fun getTodaysDate(): String {
         val calendar = GregorianCalendar()
         val dateString =
             calendar[Calendar.YEAR].toString() + "-" + ((calendar[Calendar.MONTH]) + 1).toString() + "-" + calendar[Calendar.DAY_OF_MONTH]
@@ -45,7 +45,7 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
             override fun onResponse(call: Call<MyObject>, response: Response<MyObject>) {
                 if (response.isSuccessful) {
                     Log.i("Tag", "Successfull")
-                    var jsonObj = response.body()
+                    val jsonObj = response.body()
                     Log.i("Tag", jsonObj!!.totalResults)
                     artList = jsonObj.articles
 

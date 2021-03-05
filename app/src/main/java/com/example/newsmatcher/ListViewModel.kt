@@ -22,7 +22,7 @@ class ListViewModel (application: Application):AndroidViewModel(application) {
         initAdapter(artComp.result)
     }
 
-    fun initAdapter(result: ArrayList<ArticlePair>) {
+    private fun initAdapter(result: ArrayList<ArticlePair>) {
         thisAdapter = RecyclerAdapter(result, app.baseContext)
         decoration = TopSpacingItem(20)
         layoutManager = LinearLayoutManager(app.baseContext)
